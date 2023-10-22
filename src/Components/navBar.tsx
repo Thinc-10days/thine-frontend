@@ -2,16 +2,16 @@ import { Box, Link, Stack } from "@chakra-ui/react";
 
 const items: Props[] = [
   {
-    text: "login",
-    href: "/login",
-  },
-  {
     text: "home",
     href: "/",
   },
   {
-    text: "account",
-    href: "/account",
+    text: "picker",
+    href: "/picker",
+  },
+  {
+    text: "eater",
+    href: "/eater",
   },
 ];
 
@@ -22,7 +22,7 @@ interface Props {
 
 const NavItem: React.FC<Props> = ({ text, href }) => {
   return (
-    <Link href={href} h="full">
+    <Link href={href} h="full" _hover={{ color: "#de5c8e" }}>
       {text}
     </Link>
   );
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
       width="100%"
       bgColor={"rgba(239, 174, 199, 0.50)"}
     >
-      <Stack direction="row" gap="10px" ml="20px">
+      <Stack direction="row" gap="10px" ml="auto">
         {items.map((item) => (
           <NavItem text={item.text} href={item.href} />
         ))}
