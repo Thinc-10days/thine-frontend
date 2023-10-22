@@ -1,34 +1,37 @@
 import { Box, Button, Center, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Center h="100vh" bg="white">
-      <Box
-        bgColor={"rgba(239, 174, 199, 0.50)"}
-        borderRadius={"16px"}
-        display={"row"}
-        px="100px"
-        py="100px"
-      >
+      <Box textAlign="center" display={"row"} px="100px" py="100px">
         <Text fontSize="3xl" fontWeight={700}>
-          Choose your Role
+          How are you feeling today!
         </Text>
-        <Box display="flex" flexDir="row" alignItems="center">
+        <Box
+          display="flex"
+          flexDir="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <Button
             bgColor={"white"}
             margin={"20px"}
             cursor="pointer"
             _hover={{ bgColor: "#de5c8e" }}
+            onClick={() => navigate("/picker")}
           >
-            DELIVER
+            Picker
           </Button>
           <Button
             bgColor={"white"}
             margin={"20px"}
             cursor="pointer"
             _hover={{ bgColor: "#de5c8e" }}
+            onClick={() => navigate("/eater")}
           >
-            ORDER
+            Eater
           </Button>
         </Box>
       </Box>
