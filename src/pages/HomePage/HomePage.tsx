@@ -1,7 +1,9 @@
+import { Box } from "@chakra-ui/layout";
+
 export const HomePage: React.FC = () => {
   return (
     <>
-      <h1> home aom page</h1>
+      <Box bgColor="darkcyan"></Box>
     </>
   );
 };
