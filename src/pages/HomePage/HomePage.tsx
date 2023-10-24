@@ -1,8 +1,11 @@
 import { Box, Button, Center, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 export const HomePage: React.FC = () => {
+  const user = useSelector((store: RootState) => store.authenticated);
   const navigate = useNavigate();
   return (
     <Center h="100vh" bg="white">
@@ -12,6 +15,8 @@ export const HomePage: React.FC = () => {
         </Box>
         <Text fontSize="3xl" fontWeight={700}>
           How are you feeling today!
+          <br />
+          {user ? "Welcome back!" : "Please login or register!"}
         </Text>
         <Box
           display="flex"
@@ -42,7 +47,6 @@ export const HomePage: React.FC = () => {
     </Center>
   );
 };
-
 /* <Card
       alignItems="center"
       bgColor={"green"}
