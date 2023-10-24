@@ -3,13 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { AppRouter } from "./routes/routes.tsx";
 import { ChakraProvider } from "@chakra-ui/react";
-import Navbar from "./Components/navBar.tsx";
 import theme from "./theme/index.ts";
+import NavBar from "./Components/NavBar.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <Navbar />
+      <NavBar />
       <AppRouter />
     </ChakraProvider>
   </React.StrictMode>

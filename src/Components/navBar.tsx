@@ -2,15 +2,15 @@ import { Box, Button, Container, Link, Stack } from "@chakra-ui/react";
 
 const items: Props[] = [
   {
-    text: "home",
+    text: "Home",
     href: "/",
   },
   {
-    text: "picker",
+    text: "Picker",
     href: "/picker",
   },
   {
-    text: "eater",
+    text: "Eater",
     href: "/eater",
   },
 ];
@@ -30,7 +30,7 @@ const NavItem: React.FC<Props> = ({ text, href }) => {
 
 const Navbar: React.FC = () => {
   return (
-    <Container maxW="5xl" mt="10px">
+    <Container maxW="6xl" mt="10px">
       <Box
         height="50px"
         display="flex"
