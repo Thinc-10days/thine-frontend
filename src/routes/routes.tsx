@@ -3,6 +3,7 @@ import { HomePage } from "../pages/HomePage/HomePage";
 import { LoginPage } from "../pages/Login/LoginPage";
 import SidebarLayout from "../Components/SidebarLayout";
 import { SidebarType } from "../constants/SideBarType";
+import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
 
 export const AppRouter = () => {
   return (
@@ -30,6 +31,7 @@ export const AppRouter = () => {
           <Route path="status" element={<h1> order status</h1>} />
           <Route path="summary" element={<h1> summary </h1>} />
         </Route>
+        <Route path="register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Link, Stack } from "@chakra-ui/react";
+import { Box, Container, Link, Stack } from "@chakra-ui/react";
 
 const items: Props[] = [
   {
@@ -46,15 +46,16 @@ const Navbar: React.FC = () => {
             <NavItem text={item.text} href={item.href} />
           ))}
         </Stack>
-        <Button
+        <Link
           backgroundColor="primary.0"
           color="white"
           borderRadius="16px"
           _hover={{ backgroundColor: "primary.100" }}
-          padding="20px"
+          padding="10px 18px"
+          href="/login"
         >
           Login
-        </Button>
+        </Link>
       </Box>
     </Container>
   );
