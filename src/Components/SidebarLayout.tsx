@@ -2,11 +2,18 @@ import { Box, Container, Divider } from "@chakra-ui/react";
 import SideBarMenu from "./PickerMenu";
 import { SidebarType } from "../constants/SideBarType";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 interface Props {
   type: SidebarType;
 }
 const SidebarLayout: React.FC<Props> = ({ type }) => {
+  const isAuthticate = useSelector((store: RootState) => store.authenticated);
+
+  if (!isAuthticate) {
+    return <h1> please login </h1>;
+  }
   return (
     <>
       <Container maxW="6xl">

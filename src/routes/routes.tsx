@@ -27,7 +27,7 @@ export const AppRouter = () => {
           element={<SidebarLayout type={SidebarType.Eater} />}
         >
           <Route path="" element={<h1> welcome</h1>} />
-          <Route path="search" element={<h1> search product</h1>} />
+          <Route path="search" element={<h1> search</h1>} />
           <Route path="status" element={<h1> order status</h1>} />
           <Route path="summary" element={<h1> summary </h1>} />
         </Route>
