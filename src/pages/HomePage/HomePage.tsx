@@ -1,11 +1,15 @@
 import { Box, Button, Center, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { Image } from "@chakra-ui/react";
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <Center h="100vh" bg="white">
       <Box textAlign="center" display={"row"} px="100px" py="100px">
+        <Box boxSize="sm" display="flex" alignItems="center">
+          <Image src="https://bit.ly/dan-abramov" paddingBottom={"30px"} />
+        </Box>
         <Text fontSize="3xl" fontWeight={700}>
           How are you feeling today!
         </Text>
