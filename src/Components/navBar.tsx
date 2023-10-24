@@ -1,4 +1,4 @@
-import { Box, Container, Link, Stack } from "@chakra-ui/react";
+import { Box, Container, Link, Stack, Image } from "@chakra-ui/react";
 
 const items: Props[] = [
   {
@@ -41,7 +41,8 @@ const Navbar: React.FC = () => {
         fontSize="18px"
         justifyContent="space-between"
       >
-        <Stack direction="row" gap="10px">
+        <Stack direction="row" gap="10px" alignItems="center">
+          <Image src="/public/icon.svg" />
           {items.map((item) => (
             <NavItem text={item.text} href={item.href} />
           ))}
