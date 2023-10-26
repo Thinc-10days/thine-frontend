@@ -1,18 +1,11 @@
-import {
-  Box,
-  Button,
-  Center,
-  Text,
-  useColorMode,
-  useColorModePreference,
-} from "@chakra-ui/react";
+import { Box, Button, Center, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
-import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export const HomePage: React.FC = () => {
-  const user = useSelector((store: RootState) => store.authenticated);
+  const user = useSelector((store: RootState) => store.auth.authenticated);
   const navigate = useNavigate();
   //const { colorMode } = useColorMode();
   return (

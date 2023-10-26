@@ -1,30 +1,18 @@
-import { legacy_createStore as createStore } from "redux";
-import { LOGIN_USER } from "./type";
+import { authReducer } from "./AuthSlice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { productReducer } from "./ProductSlice";
 
-interface Action {
-    type: string;
-}
+const reducer = combineReducers({
+    auth: authReducer,
+    product: productReducer
+})
 
-interface State {
-    authenticated: boolean;
-}
+const store = configureStore({
+    reducer: reducer
+})
 
-const intitialState: State = {
-    authenticated: localStorage.getItem('token') ? true : false
-};
+export type RootState = ReturnType<typeof store.getState>
 
-const reducer = (state: State = intitialState, action: Action) => {
-    switch (action.type) {
-        case LOGIN_USER:
-            return { ...state, authenticated: true };
+export type AppDispatch = typeof store.dispatch
 
-        default:
-            return state;
-    }
-};
-
-const store = createStore(reducer);
-
-export type RootState = ReturnType<typeof reducer>;
-
-export default store;
+export default store

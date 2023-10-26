@@ -10,7 +10,9 @@ interface Props {
 }
 const SidebarLayout: React.FC<Props> = ({ type }) => {
   const { colorMode } = useColorMode();
-  const isAuthticate = useSelector((store: RootState) => store.authenticated);
+  const isAuthticate = useSelector(
+    (store: RootState) => store.auth.authenticated
+  );
 
   if (!isAuthticate) {
     return <h1> please login </h1>;
@@ -29,11 +31,11 @@ const SidebarLayout: React.FC<Props> = ({ type }) => {
           borderRadius="15px"
           minH="75vh"
         >
-          <Grid templateColumns="repeat(10, 1fr)" gap="10px">
+          <Grid templateColumns="repeat(10, 1fr)" gap="35px">
             <GridItem colSpan={2}>
               <SideBarMenu type={type} />
             </GridItem>
-            <GridItem>
+            <GridItem colSpan={8}>
               <Outlet />
             </GridItem>
           </Grid>
