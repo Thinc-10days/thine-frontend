@@ -1,6 +1,9 @@
 import { Center, Input, Button, Box, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LOGIN_USER } from "../store/type";
+import { useDispatch } from "react-redux";
 
 interface Props {
   setIsLoginMode: (isLoginMode: boolean) => void;
@@ -9,6 +12,8 @@ interface Props {
 export const LoginForm: React.FC<Props> = ({ setIsLoginMode }) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredUsername(event.target.value);
@@ -29,6 +34,9 @@ export const LoginForm: React.FC<Props> = ({ setIsLoginMode }) => {
     try {
       const resp = await axios.post("http://localhost:3000/auth/signin", body);
       console.log(resp.data);
+      localStorage.setItem("token", resp.data.token);
+      dispatch({ type: LOGIN_USER, payload: resp.data });
+      navigate("/");
     } catch (error) {
       alert(JSON.stringify(error));
     }
