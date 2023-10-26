@@ -1,4 +1,5 @@
 import { Box, Container, Link, Stack, Image } from "@chakra-ui/react";
+import Toggle from "./Toggle";
 
 const items: Props[] = [
   {
@@ -42,21 +43,24 @@ const Navbar: React.FC = () => {
         justifyContent="space-between"
       >
         <Stack direction="row" gap="10px" alignItems="center">
-          <Image src="/public/icon.svg" />
+          <Image src="/public/icon.svg" width="40px" />
           {items.map((item) => (
             <NavItem text={item.text} href={item.href} />
           ))}
         </Stack>
-        <Link
-          backgroundColor="primary.0"
-          color="white"
-          borderRadius="16px"
-          _hover={{ backgroundColor: "primary.100" }}
-          padding="10px 18px"
-          href="/login"
-        >
-          Login
-        </Link>
+        <Box>
+          <Toggle />
+          <Link
+            backgroundColor="primary.0"
+            color="white"
+            borderRadius="16px"
+            _hover={{ backgroundColor: "primary.100" }}
+            padding="10px 18px"
+            href="/login"
+          >
+            Login
+          </Link>
+        </Box>
       </Box>
     </Container>
   );

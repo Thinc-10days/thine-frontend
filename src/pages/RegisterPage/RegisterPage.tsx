@@ -35,8 +35,8 @@ export const RegisterPage: React.FC = () => {
       <Box
         bgColor={"gray.200"}
         borderRadius={"16px"}
-        px="100px"
-        py="100px"
+        px="80px"
+        py="40px"
         gap="20px"
       >
         <Center>

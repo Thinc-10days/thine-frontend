@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
 
 :root {
-  font-family: 'Rubik', sans-serif;  
+  font-family: "Rubik", sans-serif;
   font-size: 14px;
-
-  background-color: '#F2F3F4'
 }

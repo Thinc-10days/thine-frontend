@@ -1,14 +1,15 @@
 import { Box, Button, Center, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
-import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export const HomePage: React.FC = () => {
-  const user = useSelector((store: RootState) => store.authenticated);
+  const user = useSelector((store: RootState) => store.auth.authenticated);
   const navigate = useNavigate();
+  //const { colorMode } = useColorMode();
   return (
-    <Center h="100vh" bg="white">
+    <Center h="100vh">
       <Box textAlign="center" display={"row"} px="100px" py="100px">
         <Box
           boxSize="sm"
@@ -30,19 +31,17 @@ export const HomePage: React.FC = () => {
           justifyContent="center"
         >
           <Button
-            bgColor={"white"}
             margin={"20px"}
             cursor="pointer"
-            _hover={{ bgColor: "#de5c8e" }}
+            _hover={{ bgColor: "primary.0" }}
             onClick={() => navigate("/picker")}
           >
             Picker
           </Button>
           <Button
-            bgColor={"white"}
             margin={"20px"}
             cursor="pointer"
-            _hover={{ bgColor: "#de5c8e" }}
+            _hover={{ bgColor: "primary.0" }}
             onClick={() => navigate("/eater")}
           >
             Eater
@@ -74,3 +73,15 @@ export const HomePage: React.FC = () => {
         </ButtonGroup>
       </CardFooter>
     </Card> */
+
+/* function Example() {
+  const { colorMode, toggleColorMode } = useColorMode()
+  return (
+    <header>
+      <Button onClick={toggleColorMode}>
+        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+      </Button>
+    </header>
+  )
+}*/
+//             bgColor={colorMode == "dark" ? "primary.0" : "primary.100"}
