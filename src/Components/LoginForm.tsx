@@ -34,13 +34,14 @@ export const LoginForm: React.FC<Props> = ({ setIsLoginMode }) => {
     }
   };
   return (
-    <Center bg="white" h="100vh">
+    <Center h="100vh">
       <Box
         bgColor={"gray.200"}
         borderRadius={"16px"}
         px="100px"
         py="100px"
         gap="20px"
+        color="primary.800"
       >
         <Center>
           <Text fontSize="4xl" fontWeight={700} mb="10px">

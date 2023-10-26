@@ -1,6 +1,8 @@
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Link, Text } from "@chakra-ui/react";
 import { SidebarType } from "../constants/SideBarType";
+import { useLocation } from "react-router-dom";
+import { readPath } from "../util/readPath";
 
 interface NavMenu {
   title: string;
@@ -47,6 +49,7 @@ interface Props {
 
 const SideBarMenu: React.FC<Props> = ({ type }) => {
   const menu = type == "picker" ? PickerMenu : EaterMenu;
+  const location = useLocation();
   return (
     <Box>
       <Box
@@ -57,14 +60,20 @@ const SideBarMenu: React.FC<Props> = ({ type }) => {
         <Box pt={3} pr={5}>
           {menu.map((item) => (
             <>
-              <Link key={item.title} href={item.href}>
+              <Link
+                key={item.title}
+                href={item.href}
+                _hover={{ textDecoration: "none", color: "primary.100" }}
+                color={
+                  location.pathname == item.href ? "primary.0" : "-moz-initial"
+                }
+              >
                 <Box
                   display="flex"
                   alignItems="center"
                   style={{ cursor: "pointer" }}
                   lineHeight="50px"
                   fontWeight="bold"
-                  _hover={{ color: "primary.100" }}
                 >
                   <ChevronRightIcon />
                   <Text>{item.title}</Text>
