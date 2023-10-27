@@ -18,15 +18,17 @@ const ProductDetailPage: React.FC = () => {
   const { colorMode } = useColorMode();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector(
-    (state: RootState) => state.product.selectedProduct
-  );
-
+  const { product, isLoading } = useSelector((state: RootState) => {
+    return {
+      product: state.product.selectedProduct,
+      isLoading: state.product.isLoading,
+    };
+  });
   useEffect(() => {
-    if (!id) return;
+    if (isLoading || !id) return;
 
     dispatch(setSelectedProduct(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, isLoading]);
 
   if (!id) {
     return <h1> invalid serach </h1>;
@@ -39,23 +41,22 @@ const ProductDetailPage: React.FC = () => {
   return (
     <Grid templateRows="repeat(2, 1fr)" gap={"30px"}>
       <GridItem
+        borderRadius="20px"
         rowSpan={1}
         backgroundImage={
           "https://www.teenaagnel.com/wp-content/uploads/2019/12/food-photography-in-dubai.jpg"
         }
-        borderRadius={"16px"}
+        backgroundSize="750px"
         border={`1px solid ${colorMode == "dark" ? "white" : "black"}`}
-        height={"full"}
-        overflow="hidden"
+        display="flex"
+        flexDirection="column"
+        color="white"
       >
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-        >
+        <Box display="flex" justifyContent="flex-end" pr="30px">
+          <Text pt="20px">{product.location}</Text>
+        </Box>
+        <Box display="flex" justifyContent="center" alignItems="center">
           <Heading>{product.name}</Heading>
-          <Text>{product.location}</Text>
         </Box>
       </GridItem>
       <GridItem rowSpan={1}>
