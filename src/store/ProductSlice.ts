@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { Product } from '../types/product'
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Product } from "../types/product";
+import axios from "axios";
 
 interface ProductState {
     products: Product[],
@@ -10,20 +10,23 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-    products: [],
-    isLoading: false,
-}
+  products: [],
+  isLoading: false,
+};
 
-export const fetchProduct = createAsyncThunk('product/fetchProduct', async () => {
-    const resp = await axios.get('http://localhost:3000/product')
+export const fetchProduct = createAsyncThunk(
+  "product/fetchProduct",
+  async () => {
+    const resp = await axios.get("http://localhost:3000/product");
     try {
-        const data: Product[] = resp.data
-        console.log(data)
-        return data
+      const data: Product[] = resp.data;
+      console.log(data);
+      return data;
     } catch (error) {
-        throw new Error('error occur')
+      throw new Error("error occur");
     }
-})
+  }
+);
 
 const productSlice = createSlice({
     name: 'product',
@@ -53,4 +56,4 @@ const productSlice = createSlice({
 
 export const { setSelectedProduct } = productSlice.actions
 
-export const productReducer = productSlice.reducer
+export const productReducer = productSlice.reducer;
