@@ -22,6 +22,7 @@ const SidebarLayout: React.FC<Props> = ({ type }) => {
       console.log(data);
     });
   }, [dispatch]);
+
   if (!isAuthticate) {
     return <h1> please login </h1>;
   }

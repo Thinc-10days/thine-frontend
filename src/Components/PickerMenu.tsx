@@ -2,7 +2,6 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Link, Text } from "@chakra-ui/react";
 import { SidebarType } from "../constants/SideBarType";
 import { useLocation } from "react-router-dom";
-import { readPath } from "../util/readPath";
 
 interface NavMenu {
   title: string;
@@ -13,10 +12,6 @@ const PickerMenu: NavMenu[] = [
   {
     title: "MainMenu",
     href: "/picker",
-  },
-  {
-    title: "Order Request",
-    href: "/picker/orderRequest",
   },
   {
     title: "Status",

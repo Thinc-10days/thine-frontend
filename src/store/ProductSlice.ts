@@ -3,10 +3,10 @@ import { Product } from "../types/product";
 import axios from "axios";
 
 interface ProductState {
-  products: Product[];
-  isLoading: boolean;
-  selectedProduct?: Product;
-  error?: unknown;
+    products: Product[],
+    isLoading: boolean,
+    selectedProduct?: Product,
+    error?: unknown,
 }
 
 const initialState: ProductState = {
@@ -29,33 +29,31 @@ export const fetchProduct = createAsyncThunk(
 );
 
 const productSlice = createSlice({
-  name: "product",
-  initialState: initialState,
-  reducers: {
-    setSelectedProduct: (state, action) => {
-      const selected = state.products.find(
-        (product) => product._id === action.payload
-      );
-      state.selectedProduct = selected;
+    name: 'product',
+    initialState: initialState,
+    reducers: {
+        setSelectedProduct: (state, action) => {
+            const selected = state.products.find((product) => product._id === action.payload)
+            state.selectedProduct = selected
+        }
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchProduct.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchProduct.fulfilled, (state, action) => {
-        state.products = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(fetchProduct.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
-        state.products = [];
-      });
-  },
-});
+    extraReducers: builder => {
+        builder
+        .addCase(fetchProduct.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(fetchProduct.fulfilled, (state, action) => {
+            state.products = action.payload
+            state.isLoading = false
+        })
+        .addCase(fetchProduct.rejected, (state, action) => {
+            state.error = action.payload
+            state.isLoading = false
+            state.products = []
+        })
+    }
+})
 
-export const { setSelectedProduct } = productSlice.actions;
+export const { setSelectedProduct } = productSlice.actions
 
 export const productReducer = productSlice.reducer;

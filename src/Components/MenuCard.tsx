@@ -1,5 +1,4 @@
 import { Box, useColorMode, Text, Image, Stack } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import { GrAddCircle } from "react-icons/gr";
 interface Props {
   name: string;
@@ -10,12 +9,10 @@ interface Props {
 
 const src =
   "https://www.unileverfoodsolutions.com.ph/dam/global-ufs/mcos/SEA/calcmenu/recipes/PH-recipes/the-vegetarian-butcher/nasvhille-hot-burger/1245x600_Nashville%20style%20Chicken%20Burger.jpg";
-export const MenuCard: React.FC<Props> = ({ name, description, price, id }) => {
-  const navigate = useNavigate();
+export const MenuCard: React.FC<Props> = ({ name, description, price }) => {
   const { colorMode } = useColorMode();
   return (
     <Box
-      onClick={() => navigate(`/picker/${id}`)}
       borderRadius={"16px"}
       border={`1px solid ${colorMode == "dark" ? "white" : "black"}`}
       height={"full"}
@@ -30,10 +27,14 @@ export const MenuCard: React.FC<Props> = ({ name, description, price, id }) => {
           {name}
         </Text>
         <Text color="GrayText"> {description}</Text>
-        <Stack direction="row" alignItems="center" mt="5px">
+        <Stack
+          direction="row"
+          alignItems="center"
+          mt="5px"
+          color={colorMode == "dark" ? "white" : "black"}
+        >
           <Text>{price}</Text>
-
-          <GrAddCircle size="20px" _hover="green" onclick="" />
+          <GrAddCircle />
         </Stack>
       </Box>
     </Box>
