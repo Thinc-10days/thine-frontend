@@ -1,4 +1,4 @@
-import { Box, Button, Flex, useColorMode } from "@chakra-ui/react";
+import { Button, useColorMode } from "@chakra-ui/react";
 import { MdLightMode, MdNightlight } from "react-icons/md";
 
 const Toggle = () => {
