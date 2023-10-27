@@ -2,17 +2,26 @@ import { Box, Container, Grid, GridItem, useColorMode } from "@chakra-ui/react";
 import SideBarMenu from "./PickerMenu";
 import { SidebarType } from "../constants/SideBarType";
 import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { useEffect } from "react";
+import { fetchProduct } from "../store/ProductSlice";
 
 interface Props {
   type: SidebarType;
 }
 const SidebarLayout: React.FC<Props> = ({ type }) => {
   const { colorMode } = useColorMode();
+  const dispatch = useDispatch<AppDispatch>();
   const isAuthticate = useSelector(
     (store: RootState) => store.auth.authenticated
   );
+
+  useEffect(() => {
+    dispatch(fetchProduct()).then((data) => {
+      console.log(data);
+    });
+  }, [dispatch]);
 
   if (!isAuthticate) {
     return <h1> please login </h1>;

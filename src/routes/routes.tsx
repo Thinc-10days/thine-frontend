@@ -5,6 +5,8 @@ import SidebarLayout from "../Components/SidebarLayout";
 import { SidebarType } from "../constants/SideBarType";
 import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
 import ProductListPage from "../pages/ProductList/ProductListPage";
+import ProductDetailPage from "../pages/ProductDetail/ProductDetailPage";
+import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
 
 export const AppRouter = () => {
   return (
@@ -18,6 +20,8 @@ export const AppRouter = () => {
           element={<SidebarLayout type={SidebarType.Picker} />}
         >
           <Route path="" element={<ProductListPage />} />
+          <Route path=":id" element={<ProductDetailPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
           <Route path="orderRequest" element={<h1> orderRequest</h1>} />
           <Route path="status" element={<h1> status</h1>} />
           <Route path="summary" element={<h1> summary</h1>} />
