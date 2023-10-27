@@ -5,7 +5,8 @@ import axios from 'axios'
 interface ProductState {
     products: Product[],
     isLoading: boolean,
-    error?: unknown
+    selectedProduct?: Product,
+    error?: unknown,
 }
 
 const initialState: ProductState = {
@@ -28,7 +29,10 @@ const productSlice = createSlice({
     name: 'product',
     initialState: initialState,
     reducers: {
-
+        setSelectedProduct: (state, action) => {
+            const selected = state.products.find((product) => product._id === action.payload)
+            state.selectedProduct = selected
+        }
     },
     extraReducers: builder => {
         builder
@@ -46,5 +50,7 @@ const productSlice = createSlice({
         })
     }
 })
+
+export const { setSelectedProduct } = productSlice.actions
 
 export const productReducer = productSlice.reducer
