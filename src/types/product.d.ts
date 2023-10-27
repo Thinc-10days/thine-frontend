@@ -1,4 +1,6 @@
 export interface Product {
+    [x: string]: string
+    price: string
     position: Position
     _id: string
     name: string
