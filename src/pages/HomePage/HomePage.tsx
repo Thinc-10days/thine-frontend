@@ -7,7 +7,7 @@ import { RootState } from "../../store/store";
 export const HomePage: React.FC = () => {
   const user = useSelector((store: RootState) => store.auth.authenticated);
   const navigate = useNavigate();
-  //const { colorMode } = useColorMode();
+
   return (
     <Center h="100vh">
       <Box textAlign="center" display={"row"} px="100px" py="100px">

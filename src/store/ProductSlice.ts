@@ -14,7 +14,11 @@ const initialState: ProductState = {
 }
 
 export const fetchProduct = createAsyncThunk('product/fetchProduct', async () => {
-    const resp = await axios.get('http://localhost:3000/product')
+    const resp = await axios.get('http://localhost:3000/product', {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
     try {
         const data: Product[] = resp.data
         console.log(data)
