@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
-import { Grid, SimpleGrid } from "@chakra-ui/react";
+import { Center, Grid, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { MenuCard } from "../../Components/MenuCard";
 import { useEffect } from "react";
@@ -9,15 +9,28 @@ import { setSelectedProduct } from "../../store/ProductSlice";
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector(
-    (state: RootState) => state.product.selectedProduct
-  );
+  const { product, isLoading } = useSelector((state: RootState) => {
+    return {
+      product: state.product.selectedProduct,
+      isLoading: state.product.isLoading,
+    };
+  });
 
   useEffect(() => {
+    if (isLoading) return;
     if (!id) return;
 
     dispatch(setSelectedProduct(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, isLoading]);
+
+  if (isLoading) {
+    return (
+      <Center>
+        {" "}
+        <Spinner />{" "}
+      </Center>
+    );
+  }
 
   if (!id) {
     return <h1> invalid serach </h1>;
